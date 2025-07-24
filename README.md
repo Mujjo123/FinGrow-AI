@@ -158,3 +158,11 @@ WealthWise/
 - 🧠 **Google Gemini AI**  
 - 🤖 **OpenAI**  
 - 🔗 **Other libraries & services used** in the project  
+
+---
+
+## 📜 License
+
+This project is licensed under a modified MIT License with an additional consent requirement. For personal or non-commercial use, you must obtain explicit written consent from the project owner.
+
+See the [LICENSE](./LICENSE) file for details.
