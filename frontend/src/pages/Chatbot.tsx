@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Bot, User, Volume2, VolumeX, Mic, MicOff, X } from 'lucide-react';
 import axios from 'axios';
-
+import { SERVER_URL } from '../utils';
 interface Message {
   type: 'user' | 'bot';
   content: string | string[];
@@ -147,7 +147,7 @@ const Chatbot = () => {
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'https://2ecd-111-125-219-62.ngrok-free.app/agent',
+        url: `${SERVER_URL}/agent`,
         data: formData
       };
 

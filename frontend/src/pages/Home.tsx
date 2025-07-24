@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { TrendingUp, Shield, Brain, BarChart as ChartBar } from 'lucide-react';
+import { TrendingUp, Shield, Brain, BarChart as ChartBar, ArrowRight } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const features = [
   {
@@ -25,31 +26,51 @@ const features = [
 ];
 
 const Home = () => {
+  const { theme } = useTheme();
+  
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       {/* Hero Section */}
-      <div className="relative bg-white overflow-hidden">
+      <div className="relative overflow-hidden bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600"></div>
         <div className="max-w-7xl mx-auto">
-          <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+          <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               <div className="sm:text-center lg:text-left">
-                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                <div className="inline-flex items-center px-4 py-1.5 mb-4 rounded-full bg-indigo-100 dark:bg-indigo-900/30 border border-indigo-200 dark:border-indigo-800">
+                  <span className="text-xs font-medium text-indigo-600 dark:text-indigo-300">Powered by AI</span>
+                </div>
+                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
                   <span className="block">Your AI-Powered</span>
-                  <span className="block text-indigo-600">Investment Partner for Indian Markets!</span>
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600">Investment Partner for Indian Markets!</span>
                 </h1>
-                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                <p className="mt-3 text-base text-gray-600 dark:text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                   Make smarter investment decisions in Indian markets with AI-driven insights, personalized recommendations, and real-time analysis of NIFTY and SENSEX.
                 </p>
-                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                  <div className="rounded-md shadow">
-                    <Link to="/sign-up" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                      Get Started
-                    </Link>
+                <div className="mt-8 sm:mt-10 sm:flex sm:justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                  <Link to="/sign-up" className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300">
+                    Get Started
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                  <Link to="/portfolio/learn" className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 border border-indigo-200 dark:border-indigo-800 text-base font-medium rounded-lg text-indigo-700 dark:text-indigo-300 bg-white dark:bg-gray-800 hover:bg-indigo-50 dark:hover:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-300">
+                    Learn More
+                  </Link>
+                </div>
+                
+                {/* Stats */}
+                <div className="mt-10 pt-6 grid grid-cols-3 gap-6 border-t border-gray-200 dark:border-gray-700">
+                  <div>
+                    <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">₹10Cr+</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Assets Analyzed</p>
                   </div>
-                  <div className="mt-3 sm:mt-0 sm:ml-3">
-                    <Link to="/portfolio/learn" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
-                      Learn More
-                    </Link>
+                  <div>
+                    <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">98%</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Accuracy Rate</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">5000+</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Active Users</p>
                   </div>
                 </div>
               </div>
@@ -57,58 +78,27 @@ const Home = () => {
           </div>
         </div>
         <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <img
-            className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-            src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-            alt="Analytics Dashboard"
-          />
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <div className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Powerful Features for Smart Investing
-            </h2>
-            <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-              Everything you need to make informed investment decisions and grow your wealth.
-            </p>
-          </div>
-
-          <div className="mt-10">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {features.map((feature, index) => (
-                <div key={index} className="pt-6">
-                  <div className="flow-root bg-white rounded-lg px-6 pb-8">
-                    <div className="-mt-6">
-                      <div className="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg">
-                        {feature.icon}
-                      </div>
-                      <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">
-                        {feature.title}
-                      </h3>
-                      <p className="mt-5 text-base text-gray-500">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="relative h-56 w-full sm:h-72 md:h-80 lg:w-4/5 lg:h-4/5 lg:mx-auto lg:my-auto lg:mt-24">
+            <img
+              className="h-full w-full object-cover lg:rounded-xl shadow-2xl"
+              src="https://www.bibs.co.in/blog-image/1708945824.jpeg"
+              alt="Analytics Dashboard"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-indigo-600/20 to-transparent rounded-xl"></div>
           </div>
         </div>
       </div>
+
+     
 
       {/* Team Section */}
-      <div className="bg-white py-16 sm:py-24">
+      <div className="bg-white dark:bg-gray-900 py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-              <h2 className="text-3xl font-extrabold text-gray-900">
+              <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white">
               Meet Our Team
               </h2>
-              <p className="mt-4 text-lg text-gray-500">
+              <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
               The brilliant minds behind WealthWise's AI-powered financial solutions.
               </p>
             </div>
@@ -126,11 +116,11 @@ const Home = () => {
               {
                 name: 'Mohit Nippanikar',
                 role: 'Full Stack Developer',
-                image: 'https://media.licdn.com/dms/image/v2/D4D03AQG66DosJBznsg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729079824237?e=1743033600&v=beta&t=wWWlB1pGo9Vcw9n30RbsocpZfubu1oHtPGURV6V3cVE',  // Add your image to public/team folder
+                image: 'https://res.cloudinary.com/dk5acaaxg/image/upload/v1751547171/mohit%20portfolio/1740507167078_kmdfdz.jpg',  // Add your image to public/team folder
                 description: 'UI/UX specialist with expertise in creating intuitive and responsive financial dashboards.',
                 highlight: 'UI/UX Specialist',
-                github: 'https://github.com/johnsmith',
-                linkedin: 'https://linkedin.com/in/johnsmith'
+                github: 'https://github.com/Mohit-Nippanikar78',
+                linkedin: 'https://www.linkedin.com/in/mohitnippanikar/'
               },
               {
                 name: 'Meet Patel',
@@ -142,7 +132,7 @@ const Home = () => {
                 linkedin: 'https://linkedin.com/in/emmawilson'
               }
             ].map((member) => (
-              <div key={member.name} className="bg-white overflow-hidden shadow-lg rounded-lg flex flex-col">
+              <div key={member.name} className="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg flex flex-col">
                 {/* Image Container with fixed aspect ratio and highlight effect */}
                 <div className="relative pt-[100%]">
                   <div className="absolute inset-0 p-2">
@@ -162,24 +152,24 @@ const Home = () => {
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                      <p className="text-sm text-indigo-600 font-medium">{member.role}</p>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">{member.name}</h3>
+                      <p className="text-sm text-indigo-600 dark:text-indigo-400 font-medium">{member.role}</p>
                     </div>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300">
                       {member.highlight}
                     </span>
                   </div>
-                  <p className="text-base text-gray-500 flex-1">
+                  <p className="text-base text-gray-500 dark:text-gray-400 flex-1">
                     {member.description}
                   </p>
                   
                   {/* Social Links - Fixed at bottom */}
-                  <div className="mt-6 pt-4 border-t border-gray-200 flex justify-center space-x-6">
+                  <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 flex justify-center space-x-6">
                     <a 
                       href={member.github}
                       target="_blank"
                       rel="noopener noreferrer" 
-                      className="text-gray-400 hover:text-gray-500 transition-colors"
+                      className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors"
                     >
                       <span className="sr-only">GitHub</span>
                       <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -190,7 +180,7 @@ const Home = () => {
                       href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer" 
-                      className="text-gray-400 hover:text-gray-500 transition-colors"
+                      className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors"
                     >
                       <span className="sr-only">LinkedIn</span>
                       <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -201,6 +191,41 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+       {/* Features Section */}
+       <div className="py-12 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+              Powerful Features for Smart Investing
+            </h2>
+            <p className="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-400 mx-auto">
+              Everything you need to make informed investment decisions and grow your wealth.
+            </p>
+          </div>
+
+          <div className="mt-10">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {features.map((feature, index) => (
+                <div key={index} className="pt-6">
+                  <div className="flow-root bg-white dark:bg-gray-800 rounded-lg px-6 pb-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div className="-mt-6">
+                      <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-md shadow-lg">
+                        {feature.icon}
+                      </div>
+                      <h3 className="mt-8 text-lg font-medium text-gray-900 dark:text-white tracking-tight">
+                        {feature.title}
+                      </h3>
+                      <p className="mt-5 text-base text-gray-500 dark:text-gray-400">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

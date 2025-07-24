@@ -5,6 +5,11 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    exclude: ['lucide-react'],
+    include: ['lucide-react'],
   },
+  define: {
+    // Add React Router future flags
+    'process.env.ROUTER_FUTURE_v7_startTransition': 'true',
+    'process.env.ROUTER_FUTURE_v7_relativeSplatPath': 'true'
+  }
 });

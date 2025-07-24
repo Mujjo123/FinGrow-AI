@@ -17,6 +17,7 @@ import Chatbot from './pages/Chatbot';
 import MoneyPulse from './components/MoneyPulse';
 import MoneyCalc from './components/MoneyCalc';
 import StockAnalyzer from './pages/StockAnalyzer';
+import SSOCallback from './components/SSOCallback';
 
 const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/" element={<><Navbar /><Home /></>} />
                 <Route path="/sign-in" element={<AuthComponent />} />
                 <Route path="/sign-up" element={<AuthComponent />} />
+                <Route path="/sign-up/sso-callback" element={<SSOCallback />} />
                 <Route path="/portfolio" element={
                   <ProtectedRoute>
                     <DashboardLayout>

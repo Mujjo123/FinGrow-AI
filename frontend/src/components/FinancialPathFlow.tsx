@@ -13,6 +13,8 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { Mic, MicOff, Send } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { SERVER_URL } from '../utils';
 
 // Define custom types for Speech Recognition
 declare global {
@@ -49,10 +51,12 @@ interface StrategyStyle {
   stroke?: string;
 }
 
+// Extend the Node type from ReactFlow
 interface FlowNode extends Node {
   style: StrategyStyle;
 }
 
+// Extend the Edge type from ReactFlow
 interface FlowEdge extends Edge {
   style: StrategyStyle;
 }
@@ -106,6 +110,7 @@ const sampleInputs: SampleInput[] = [
 ];
 
 const FinancialPathFlow = () => {
+  const { theme } = useTheme();
   const [activeTab, setActiveTab] = useState('conservative');
   const [userInput, setUserInput] = useState('');
   const [isListening, setIsListening] = useState(false);
@@ -115,11 +120,12 @@ const FinancialPathFlow = () => {
   const [serverData, setServerData] = useState<ServerResponse | null>(null);
   const flowchartRef = useRef<HTMLDivElement>(null);
 
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  // Cast the entire hook call to any to bypass type checking
+  const [nodes, setNodes, onNodesChange] = useNodesState([]) as any;
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]) as any;
 
   const onConnect = useCallback(
-    (params: Connection | Edge) => setEdges((eds: Edge[]) => addEdge(params, eds)),
+    (params: Connection | Edge) => setEdges((eds: any) => addEdge(params, eds)),
     [setEdges]
   );
 
@@ -184,7 +190,7 @@ const FinancialPathFlow = () => {
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'https://2ecd-111-125-219-62.ngrok-free.app/ai-financial-path',
+        url: `${SERVER_URL}/ai-financial-path`,
         data: formData
       };
 
@@ -245,7 +251,7 @@ const FinancialPathFlow = () => {
     {
       id: 'conservative',
       label: 'Conservative',
-      color: 'blue',
+      color: 'indigo',
       description: 'Low-risk approach focusing on capital preservation with stable returns',
       returns: '7-9% p.a.'
     },
@@ -259,7 +265,7 @@ const FinancialPathFlow = () => {
     {
       id: 'aggressive',
       label: 'Aggressive',
-      color: 'red',
+      color: 'indigo',
       description: 'High-risk, high-reward strategy focusing on growth',
       returns: '15-20% p.a.'
     }
@@ -269,26 +275,26 @@ const FinancialPathFlow = () => {
     <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Investment Pathway Generator</h1>
-        <p className="text-gray-600">Create your personalized investment strategy based on your goals and risk tolerance</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Investment Pathway Generator</h1>
+        <p className="text-gray-600 dark:text-gray-300">Create your personalized investment strategy based on your goals and risk tolerance</p>
       </div>
 
       {/* Input Card */}
-      <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-2xl">
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-2xl">
         {/* Sample Inputs */}
-        <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 border-b border-gray-200">
+        <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">Sample Inputs:</span>
-            <span className="ml-2 text-xs text-gray-500">(Click to populate)</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Sample Inputs:</span>
+            <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">(Click to populate)</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {sampleInputs.map((sample, index) => (
               <button
                 key={index}
                 onClick={() => handleSampleInput(sample.text)}
-                className="px-3 py-1.5 text-sm bg-white rounded-lg border border-gray-200 hover:border-blue-400 hover:bg-blue-50 transition-all duration-200 flex items-center group"
+                className="px-3 py-1.5 text-sm bg-white dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-indigo-400 dark:hover:border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-all duration-200 flex items-center group"
               >
-                <span className="text-gray-600 group-hover:text-blue-600">{sample.title}</span>
+                <span className="text-gray-600 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-300">{sample.title}</span>
               </button>
             ))}
           </div>
@@ -302,15 +308,15 @@ const FinancialPathFlow = () => {
               value={userInput}
               onChange={handleTextareaInput}
               placeholder="Describe your investment goals, risk tolerance, and preferences..."
-              className="w-full min-h-[120px] p-5 text-gray-800 placeholder-gray-400 bg-gray-50 border border-gray-200 rounded-xl resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+              className="w-full min-h-[120px] p-5 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl resize-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 focus:border-transparent transition-all duration-300"
               style={{ height: 'auto' }}
             />
             <button
               onClick={handleSpeechToText}
               className={`absolute top-5 right-5 p-2.5 rounded-full transition-all duration-300 transform hover:scale-105 ${
                 isListening 
-                  ? 'bg-red-100 text-red-600 hover:bg-red-200' 
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/50' 
+                  : 'bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-500'
               }`}
             >
               {isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
@@ -325,8 +331,8 @@ const FinancialPathFlow = () => {
                 onClick={() => handleStrategySelect(tab.id)}
                 className={`p-4 rounded-xl border-2 transition-all duration-300 transform hover:scale-102 ${
                   activeTab === tab.id
-                    ? `border-${tab.color}-500 bg-gradient-to-br from-${tab.color}-50 to-${tab.color}-100 text-${tab.color}-700 shadow-md`
-                    : 'border-gray-200 hover:border-gray-300 text-gray-600 hover:bg-gray-50'
+                    ? `border-indigo-500 dark:border-indigo-400 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-900/30 dark:to-indigo-800/30 text-indigo-700 dark:text-indigo-300 shadow-md`
+                    : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                 }`}
               >
                 <div className="font-semibold">{tab.label}</div>
@@ -337,14 +343,14 @@ const FinancialPathFlow = () => {
         </div>
 
         {/* Generate Button */}
-        <div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100 border-t border-gray-200">
+        <div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 border-t border-gray-200 dark:border-gray-700">
           <button
             onClick={handleGenerate}
             disabled={!activeTab || isGenerating}
             className={`w-full flex items-center justify-center space-x-3 px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 transform hover:scale-102 ${
               activeTab && !isGenerating
-                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl'
-                : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                ? 'bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white shadow-lg hover:shadow-xl'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
             }`}
           >
             <Send className="h-6 w-6" />
@@ -355,10 +361,10 @@ const FinancialPathFlow = () => {
 
       {/* Loading State */}
       {isGenerating && (
-        <div className="bg-white rounded-2xl shadow-xl p-10 text-center max-w-2xl mx-auto">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent mx-auto"></div>
-          <h3 className="mt-6 text-xl font-semibold text-gray-900">Creating Your Personalized Investment Pathway</h3>
-          <p className="mt-3 text-gray-600">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-10 text-center max-w-2xl mx-auto">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-indigo-600 dark:border-indigo-400 border-t-transparent mx-auto"></div>
+          <h3 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Creating Your Personalized Investment Pathway</h3>
+          <p className="mt-3 text-gray-600 dark:text-gray-300">
             Analyzing your preferences and generating the optimal investment strategy...
           </p>
         </div>
@@ -368,8 +374,8 @@ const FinancialPathFlow = () => {
       {showFlowchart && serverData && (
         <div ref={flowchartRef} className="space-y-6 animate-fade-in scroll-mt-8">
           {/* Flowchart */}
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="h-[700px] w-full bg-gradient-to-br from-gray-50 to-gray-100">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+            <div className="h-[700px] w-full bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700">
               <ReactFlow
                 nodes={nodes}
                 edges={edges}
@@ -377,14 +383,14 @@ const FinancialPathFlow = () => {
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
                 fitView
-                className="bg-gray-50"
+                className="bg-gray-50 dark:bg-gray-800"
                 defaultEdgeOptions={{
                   type: 'smoothstep',
                   animated: true,
                   style: { strokeWidth: 2 }
                 }}
               >
-                <Background />
+                <Background color={theme === 'dark' ? '#374151' : '#e5e7eb'} />
                 <Controls />
               </ReactFlow>
             </div>
