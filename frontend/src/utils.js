@@ -1,6 +1,6 @@
-// Production backend URL - replace with your actual Render URL after deployment
+// Replace 'your-render-url' with your actual Render backend URL after deployment
 export const SERVER_URL = process.env.NODE_ENV === 'production' 
-  ? "https://fingrow-ai-backend.onrender.com" 
+  ? "https://your-render-url.onrender.com" 
   : "http://127.0.0.1:5000";
 
 // Function to calculate income tax based on Indian tax slabs

@@ -9,8 +9,12 @@ import gemini_fin_path
 import os
 
 app = Flask(__name__)
-# Configure CORS for production
-CORS(app, origins=["https://fingrow-ai-frontend.onrender.com", "http://localhost:5173", "http://localhost:5174"])
+# Configure CORS for production - replace 'your-vercel-url' with your actual Vercel frontend URL
+CORS(app, origins=[
+    "https://your-vercel-url.vercel.app", 
+    "http://localhost:5173", 
+    "http://localhost:5174"
+])
 
 @app.route('/', methods=['GET'])
 def home():

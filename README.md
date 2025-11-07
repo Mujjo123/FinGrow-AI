@@ -2,12 +2,7 @@
 
 **FinGrow AI** is a **comprehensive AI-powered personal finance advisor** that combines various intelligent features including **chatbot capabilities, financial analysis, and much more**. Built with a **modern tech stack**, it features a **React frontend** and a **Python Flask backend**.  
 
-## 📽️ Demo
 
-<video width="640" height="360" controls>
-  <source src="demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
 
 ---
 
@@ -185,7 +180,9 @@ FinGrow AI/
 
 ## 👥 Authors  
 
-- 🚀 [Mujaffar Mujawar](https://www.linkedin.com/in/mujaffar-mujawar-636a251a6/)  
+- 🚀 [Mujaffar Mujawar](https://github.com/Mujjo123) - **Project Owner**  
+
+*Previous Contributors:*
 - 🤖 [Gayatri Nalavade](https://www.linkedin.com/in/gayatri-nalavade-578609262/)  
 - 📈 [Navneet Kamurti](https://www.linkedin.com/in/navneet-kamurti-651124289/)
 - 🧠 [Neeraj Adam](https://linkedin.com/in/neerajadam)  
