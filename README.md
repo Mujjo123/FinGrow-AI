@@ -182,11 +182,6 @@ FinGrow AI/
 
 - 🚀 [Mujaffar Mujawar](https://github.com/Mujjo123) - **Project Owner**  
 
-*Previous Contributors:*
-- 🤖 [Gayatri Nalavade](https://www.linkedin.com/in/gayatri-nalavade-578609262/)  
-- 📈 [Navneet Kamurti](https://www.linkedin.com/in/navneet-kamurti-651124289/)
-- 🧠 [Neeraj Adam](https://linkedin.com/in/neerajadam)  
-
 ---
 
 ## 🙏 Acknowledgments  
