@@ -75,7 +75,7 @@ export const recentActivity = [
   {
     type: 'Stock Purchase',
     amount: '+ ₹50,000',
-    date: '2024-01-25',
+    date: '2025-01-25',
     status: 'Completed',
     category: 'HDFC Bank',
     balance: '₹4,50,000'
@@ -83,7 +83,7 @@ export const recentActivity = [
   {
     type: 'SIP Investment',
     amount: '+ ₹25,000',
-    date: '2024-01-20',
+    date: '2025-01-20',
     status: 'Completed',
     category: 'Mutual Funds',
     balance: '₹4,00,000'

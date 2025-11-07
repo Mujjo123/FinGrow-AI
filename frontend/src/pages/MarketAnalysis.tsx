@@ -2,17 +2,17 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { TrendingUp, TrendingDown, Globe, Search } from 'lucide-react';
 
 const data = [
-  { date: '2024-01', SP500: 4200, NASDAQ: 14000, DOW: 35000 },
-  { date: '2024-02', SP500: 4300, NASDAQ: 14500, DOW: 35500 },
-  { date: '2024-03', SP500: 4250, NASDAQ: 14300, DOW: 35200 },
-  { date: '2024-04', SP500: 4400, NASDAQ: 14800, DOW: 36000 },
-  { date: '2024-05', SP500: 4450, NASDAQ: 15000, DOW: 36500 },
-  { date: '2024-06', SP500: 4500, NASDAQ: 15200, DOW: 37000 },
+  { date: '2025-01', SP500: 4200, NASDAQ: 14000, DOW: 35000 },
+  { date: '2025-02', SP500: 4300, NASDAQ: 14500, DOW: 35500 },
+  { date: '2025-03', SP500: 4250, NASDAQ: 14300, DOW: 35200 },
+  { date: '2025-04', SP500: 4400, NASDAQ: 14800, DOW: 36000 },
+  { date: '2025-05', SP500: 4450, NASDAQ: 15000, DOW: 36500 },
+  { date: '2025-06', SP500: 4500, NASDAQ: 15200, DOW: 37000 },
 ];
 
 const marketNews = [
   {
-    title: 'Fed Signals Potential Rate Cuts in 2024',
+    title: 'Fed Signals Potential Rate Cuts in 2025',
     source: 'Financial Times',
     time: '2 hours ago',
     impact: 'positive',

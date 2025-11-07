@@ -99,46 +99,19 @@ const Home = () => {
               Meet Our Team
               </h2>
               <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
-              The brilliant minds behind FinGrow AI's AI-powered financial solutions.
+              The brilliant mind behind FinGrow AI's AI-powered financial solutions.
               </p>
             </div>
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 name: 'Mujaffar Mujawar',
-                role: 'Full Stack Developer',
+                role: 'Full Stack Developer & Creator',
                 image: '',  // Add your image to public/team folder
-                description: 'Specializes in backend architecture and API development. Built the robust server infrastructure powering our financial platform.',
-                highlight: 'Backend Focus',
+                description: 'Created FinGrow AI in 2025. Specializes in full-stack development, AI integration, and financial technology solutions.',
+                highlight: 'Creator & Lead Developer',
                 github: 'https://github.com/Mujjo123',
                 linkedin: 'https://www.linkedin.com/in/mujaffar-mujawar-636a251a6/'
-              },
-              {
-                name: 'Gayatri Nalvade',
-                role: 'Full Stack Developer',
-                image: '',  // Add your image to public/team folder
-                description: 'Expert in creating beautiful, responsive user interfaces. Designed and developed our intuitive financial dashboards.',
-                highlight: 'Frontend Focus',
-                github: 'https://github.com/gayatrinalvade',
-                linkedin: 'https://www.linkedin.com/in/gayatri-nalavade-578609262/'
-              },
-              {
-                name: 'Navneet Kamurti',
-                role: 'AI/ML Developer',
-                image: '',  // Add your image to public/team folder
-                description: 'Specializes in Large Language Model integration. Architected our AI-powered financial advisory system using cutting-edge LLMs.',
-                highlight: 'LLM Integration',
-                github: 'https://github.com/navneetkamurti',
-                linkedin: 'https://www.linkedin.com/in/navneet-kamurti-651124289/'
-              },
-              {
-                name: 'Neeraj Adam',
-                role: 'AI/ML Developer',
-                image: '',  // Add your image to public/team folder
-                description: 'Focuses on data analysis and predictive modeling. Develops advanced analytics algorithms for financial insights and forecasting.',
-                highlight: 'Data & Analytics',
-                github: 'https://github.com/neerajadam',
-                linkedin: 'https://linkedin.com/in/neerajadam'
               }
             ].map((member) => (
               <div key={member.name} className="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg flex flex-col">
