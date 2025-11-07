@@ -32,7 +32,8 @@ function App() {
                 <Route path="/" element={<><Navbar /><Home /></>} />
                 <Route path="/sign-in" element={<AuthComponent />} />
                 <Route path="/sign-up" element={<AuthComponent />} />
-                <Route path="/sign-up/sso-callback" element={<SSOCallback />} />
+                <Route path="/sign-up/sso-callback/*" element={<SSOCallback />} />
+                <Route path="/sign-in/sso-callback/*" element={<SSOCallback />} />
                 <Route path="/portfolio" element={
                   <ProtectedRoute>
                     <DashboardLayout>

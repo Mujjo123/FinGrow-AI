@@ -99,37 +99,46 @@ const Home = () => {
               Meet Our Team
               </h2>
               <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
-              The brilliant minds behind WealthWise's AI-powered financial solutions.
+              The brilliant minds behind FinGrow AI's AI-powered financial solutions.
               </p>
             </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                name: 'Rachit Chheda',
+                name: 'Mujaffar Mujawar',
                 role: 'Full Stack Developer',
-                image: 'https://rachit-chheda.netlify.app/static/media/HeroImage.ff8c45127080e96bd251.jpg',  // Add your image to public/team folder
-                description: 'Specializes in AI/ML and financial algorithms. Led the development of our core investment analysis engine.',
-                highlight: 'Web Dev Expert',
-                github: 'https://github.com/rachitgupta',
-                linkedin: 'https://linkedin.com/in/rachitgupta'
+                image: '',  // Add your image to public/team folder
+                description: 'Specializes in backend architecture and API development. Built the robust server infrastructure powering our financial platform.',
+                highlight: 'Backend Focus',
+                github: 'https://github.com/Mujjo123',
+                linkedin: 'https://www.linkedin.com/in/mujaffar-mujawar-636a251a6/'
               },
               {
-                name: 'Mohit Nippanikar',
+                name: 'Gayatri Nalvade',
                 role: 'Full Stack Developer',
-                image: 'https://res.cloudinary.com/dk5acaaxg/image/upload/v1751547171/mohit%20portfolio/1740507167078_kmdfdz.jpg',  // Add your image to public/team folder
-                description: 'UI/UX specialist with expertise in creating intuitive and responsive financial dashboards.',
-                highlight: 'UI/UX Specialist',
-                github: 'https://github.com/Mohit-Nippanikar78',
-                linkedin: 'https://www.linkedin.com/in/mohitnippanikar/'
+                image: '',  // Add your image to public/team folder
+                description: 'Expert in creating beautiful, responsive user interfaces. Designed and developed our intuitive financial dashboards.',
+                highlight: 'Frontend Focus',
+                github: 'https://github.com/gayatrinalvade',
+                linkedin: 'https://www.linkedin.com/in/gayatri-nalavade-578609262/'
               },
               {
-                name: 'Meet Patel',
+                name: 'Navneet Kamurti',
                 role: 'AI/ML Developer',
-                image: 'https://media.licdn.com/dms/image/v2/D5603AQF3PUbfQY3j3A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1709204577716?e=1743033600&v=beta&t=7hCvxbS2_dtipC9F2xtwJpBhWLw5xvrx7MVUxE0YX9w',  // Add your image to public/team folder
-                description: 'Security and scalability expert. Architected our robust financial data processing pipeline.',
-                highlight: 'AI/ML Expert',
-                github: 'https://github.com/emmawilson',
-                linkedin: 'https://linkedin.com/in/emmawilson'
+                image: '',  // Add your image to public/team folder
+                description: 'Specializes in Large Language Model integration. Architected our AI-powered financial advisory system using cutting-edge LLMs.',
+                highlight: 'LLM Integration',
+                github: 'https://github.com/navneetkamurti',
+                linkedin: 'https://www.linkedin.com/in/navneet-kamurti-651124289/'
+              },
+              {
+                name: 'Neeraj Adam',
+                role: 'AI/ML Developer',
+                image: '',  // Add your image to public/team folder
+                description: 'Focuses on data analysis and predictive modeling. Develops advanced analytics algorithms for financial insights and forecasting.',
+                highlight: 'Data & Analytics',
+                github: 'https://github.com/neerajadam',
+                linkedin: 'https://linkedin.com/in/neerajadam'
               }
             ].map((member) => (
               <div key={member.name} className="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg flex flex-col">

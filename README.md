@@ -1,6 +1,6 @@
-# 💰 Wealth Wise 🚀  
+# 💰 FinGrow AI 🚀  
 
-**Wealth Wise** is a **comprehensive AI-powered personal finance advisor** that combines various intelligent features including **chatbot capabilities, financial analysis, and much more**. Built with a **modern tech stack**, it features a **React frontend** and a **Python Flask backend**.  
+**FinGrow AI** is a **comprehensive AI-powered personal finance advisor** that combines various intelligent features including **chatbot capabilities, financial analysis, and much more**. Built with a **modern tech stack**, it features a **React frontend** and a **Python Flask backend**.  
 
 ## 📽️ Demo
 
@@ -13,22 +13,21 @@
 
 ## 🌟 Features  
 
-✅ **AI-powered reAct agent** 🤖 with **LLM integration**  
-📊 **Financial analysis & path planning** 📈  
+✅ **AI-powered Financial Assistant** 🤖 with **LLM integration**  
+📊 **Financial Path Planning** - Visual investment strategy generator 🗺️  
+📈 **Stock Analyzer** - Real-time stock price analysis and historical data 📊  
 🗣️ **Speech processing capabilities** 🎙️  
 📰 **News aggregation & display** 🌍  
-🔐 **Secure Google & Metamask login** 🔑  
+🔐 **Secure authentication** 🔑  
 📊 **Clean visual dashboard** to summarize all your financial data 📉  
 📂 **MyData tab** to update your financial information ✏️  
 💡 **Recommendations tab** for the best investment options 💰  
 📚 **Money Matters** – Learn about finance 🏦  
-🛣️ **Financial Path** – Plan your financial journey visually 🗺️  
-🧮 **Money Calculator** – Predict your future finances 📅  
+🧮 **Income Tax Calculator** – Calculate your tax liability based on Indian tax slabs 📅  
 🧠 **AI Agent** – Get real-time financial insights using web & APIs 🌐  
 🚀 **Money Plus** – Real-time financial news updates 📰  
-📈 **Stock Analyzer** – Notifies you of the best investment timings 📊  
 
----  
+---
 
 ## 🛠️ Tech Stack  
 
@@ -37,23 +36,27 @@
 🎨 **Tailwind CSS** for styling  
 ⚡ **Vite** as the build tool  
 ✅ **ESLint** for code quality  
+🔄 **React Router** for navigation  
+📊 **Recharts** for data visualization  
 
 ### 🖥️ Backend  
 🐍 **Python Flask**  
 🧠 **Google's Gemini AI**  
-🤖 **AI/ML libraries**  
-☁️ **Cloud services integration**  
+🤖 **Langchain** for AI agent implementation  
+🔍 **yfinance** for stock data  
+🦆 **DuckDuckGo Search** for web search  
+💻 **Python REPL** for code execution  
 
----  
+---
 
 ## 📋 Prerequisites  
 
 🖥️ **Node.js** (v16 or higher)  
 🐍 **Python** (3.8+)  
 📦 **npm** or **yarn**  
-🔑 **Required API keys** (Gemini, Cloudinary, etc.)  
+🔑 **Required API keys** (Gemini, etc.)  
 
----  
+---
 
 ## 🔧 Installation  
 
@@ -71,9 +74,13 @@
    ```bash
    pip install -r requirements.txt
    ```  
-4️⃣ Set up **environment variables**:  
+4️⃣ Install additional required packages:
+   ```bash
+   pip install langchain-experimental ddgs yfinance
+   ```
+5️⃣ Set up **environment variables**:  
    - Create a `.env` file in the backend directory  
-   - Add **necessary API keys and configurations**  
+   - Add your **Google Gemini API key**: `GEMINI_API_KEY=your_api_key_here`
 
 ### 🎨 Frontend Setup  
 1️⃣ Navigate to the frontend directory:  
@@ -90,7 +97,7 @@
    - Create a `.env` file in the frontend directory  
    - Add necessary **configuration variables**  
 
----  
+---
 
 ## 🚀 Running the Application  
 
@@ -110,54 +117,88 @@
    ```  
    ✅ The frontend development server will start on **http://localhost:5173**  
 
----  
+---
+
+## 🎯 Using the Application  
+
+Once both servers are running, open your browser and navigate to **http://localhost:5173** to access the application.
+
+### Main Features:
+
+#### 1. **Financial Path Planner**
+- Navigate to the "Financial Path" section
+- Describe your investment goals and risk tolerance
+- Get a visual flowchart of recommended investment strategies
+
+#### 2. **AI Financial Assistant**
+- Go to the "AI Assistant" section
+- Ask questions like:
+  - "What is the stock price of Adani Green?"
+  - "Give me last 3 days stock price of TCS"
+  - "What is the current time?"
+- Get real-time financial information and analysis
+
+#### 3. **Stock Analyzer**
+- Visit the "Stock Analyzer" section
+- Enter company names to get real-time stock prices
+- View historical price data and basic analysis
+
+#### 4. **Income Tax Calculator**
+- Go to "My Data" → "Income" tab
+- Add your income sources
+- Click "Calculate Tax" to see your tax liability based on current Indian tax slabs
+
+---
 
 ## 🔑 Environment Variables  
 
 ### ⚙️ Backend (`.env`)  
-🔹 **GEMINI_API_KEY**  
-🔹 **CLOUDINARY_CLOUD_NAME**  
-🔹 **CLOUDINARY_API_KEY**  
-🔹 **CLOUDINARY_API_SECRET**  
-🔹 **Other service-specific API keys**  
+🔹 **GEMINI_API_KEY** - Google Gemini API key for AI features
 
 ### ⚙️ Frontend (`.env`)  
-🔹 **VITE_API_URL**  
+🔹 **VITE_API_URL** - Backend API URL (default: http://127.0.0.1:5000)
 🔹 **Other frontend-specific configurations**  
 
----  
+---
 
 ## 📁 Project Structure  
 
 ```
-WealthWise/
+FinGrow AI/
 ├── backend/
 │   ├── app.py              # Main Flask application
 │   ├── agent.py            # AI agent implementation
-│   ├── gemini_fin_path.py  # Financial analysis module
-│   ├── scheduler.py        # Task scheduling
-│   └── tools/              # Utility functions and tools
+│   ├── gemini_fin_path.py  # Financial path generation module
+│   ├── tools/              # Utility functions and tools
+│   │   └── mytools.py      # Financial tools (stock data, calculations, etc.)
+│   └── requirements.txt    # Python dependencies
 ├── frontend/
-│   ├── src/               # React source files
-│   ├── public/            # Static assets
-│   └── package.json       # Frontend dependencies
+│   ├── src/                # React source files
+│   │   ├── pages/          # Main page components
+│   │   ├── components/     # Reusable UI components
+│   │   └── utils.ts        # Utility functions
+│   ├── public/             # Static assets
+│   └── package.json        # Frontend dependencies
 ```
 
----  
+---
 
 ## 👥 Authors  
 
-- 🚀 [Meet Patel](https://www.linkedin.com/in/meet244/)  
-- 🤖 [Mohit Nippanikar](https://www.linkedin.com/in/mohitnippanikar/)  
-- 📈 [Rachit Chheda](https://www.linkedin.com/in/rachit-chheda-a1224124a/)  
+- 🚀 [Mujaffar Mujawar](https://www.linkedin.com/in/mujaffar-mujawar-636a251a6/)  
+- 🤖 [Gayatri Nalavade](https://www.linkedin.com/in/gayatri-nalavade-578609262/)  
+- 📈 [Navneet Kamurti](https://www.linkedin.com/in/navneet-kamurti-651124289/)
+- 🧠 [Neeraj Adam](https://linkedin.com/in/neerajadam)  
 
----  
+---
 
 ## 🙏 Acknowledgments  
 
 - 🧠 **Google Gemini AI**  
-- 🤖 **OpenAI**  
-- 🔗 **Other libraries & services used** in the project  
+- 🤖 **Langchain**  
+- 🔗 **yfinance** for stock data  
+- 🦆 **DuckDuckGo** for search capabilities  
+- 🎨 **Tailwind CSS** for styling  
 
 ---
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { DollarSign, Plus, Trash2, Edit2, X, Briefcase, Gift, Landmark, TrendingUp } from 'lucide-react';
+import { DollarSign, Plus, Trash2, Edit2, X, Briefcase, Gift, Landmark, TrendingUp, Calculator } from 'lucide-react';
+import { calculateIncomeTax, formatIndianCurrency } from '../../../utils';
 
 interface Income {
   id: string;
@@ -22,6 +23,13 @@ export const IncomeTab = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedIncome, setSelectedIncome] = useState<string | null>(null);
+  const [showTaxCalculator, setShowTaxCalculator] = useState(false);
+  const [taxDetails, setTaxDetails] = useState({
+    annualIncome: 0,
+    taxAmount: 0,
+    afterTaxIncome: 0
+  });
+  
   const [formData, setFormData] = useState({
     source: '',
     amount: '',
@@ -114,6 +122,21 @@ export const IncomeTab = () => {
     }, 0);
   };
 
+  const getTotalAnnualIncome = () => {
+    return getTotalMonthlyIncome() * 12;
+  };
+
+  const handleTaxCalculation = () => {
+    const annualIncome = getTotalAnnualIncome();
+    const taxAmount = calculateIncomeTax(annualIncome);
+    setTaxDetails({
+      annualIncome,
+      taxAmount,
+      afterTaxIncome: annualIncome - taxAmount
+    });
+    setShowTaxCalculator(true);
+  };
+
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
@@ -181,10 +204,56 @@ export const IncomeTab = () => {
           <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4">
             <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">Yearly Total</h4>
             <p className="mt-2 text-2xl font-semibold text-gray-900 dark:text-white">
-              {formatCurrency(getTotalMonthlyIncome() * 12)}
+              {formatCurrency(getTotalAnnualIncome())}
             </p>
           </div>
         </div>
+      </div>
+
+      {/* Tax Calculator Section */}
+      <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-2xl p-6 border border-blue-100 dark:border-blue-900/50">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <div className="p-2 bg-blue-100 dark:bg-blue-900/50 rounded-lg">
+              <Calculator className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Income Tax Calculator</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Calculate your tax liability based on current Indian tax slabs
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={handleTaxCalculation}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors"
+          >
+            Calculate Tax
+          </button>
+        </div>
+
+        {showTaxCalculator && (
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+              <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">Annual Income</h4>
+              <p className="mt-1 text-xl font-semibold text-gray-900 dark:text-white">
+                {formatIndianCurrency(taxDetails.annualIncome)}
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+              <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">Tax to Pay</h4>
+              <p className="mt-1 text-xl font-semibold text-red-600 dark:text-red-400">
+                {formatIndianCurrency(taxDetails.taxAmount)}
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+              <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">After Tax Income</h4>
+              <p className="mt-1 text-xl font-semibold text-green-600 dark:text-green-400">
+                {formatIndianCurrency(taxDetails.afterTaxIncome)}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Income List */}
@@ -373,4 +442,4 @@ export const IncomeTab = () => {
       )}
     </div>
   );
-}; 
+};
