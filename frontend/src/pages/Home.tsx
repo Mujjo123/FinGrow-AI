@@ -96,7 +96,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
               <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white">
-              Meet Our Team
+              Meet the Creator
               </h2>
               <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
               The brilliant mind behind FinGrow AI's AI-powered financial solutions.
@@ -108,8 +108,8 @@ const Home = () => {
                 name: 'Mujaffar Mujawar',
                 role: 'Full Stack Developer & Creator',
                 image: '',  // Add your image to public/team folder
-                description: 'Created FinGrow AI in 2025. Specializes in full-stack development, AI integration, and financial technology solutions.',
-                highlight: 'Creator & Lead Developer',
+                description: 'Sole creator of FinGrow AI in 2025. Specializes in full-stack development, AI integration, and financial technology solutions.',
+                highlight: 'Sole Creator & Lead Developer',
                 github: 'https://github.com/Mujjo123',
                 linkedin: 'https://www.linkedin.com/in/mujaffar-mujawar-636a251a6/'
               }
