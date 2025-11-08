@@ -21,6 +21,7 @@
 🚀 **Money Plus** – Real-time financial news updates 📰  
 
 ---
+You can see the website :- https://fingrow-ai-frontend.onrender.com
 
 ## 🛠️ Tech Stack
 
@@ -140,7 +141,7 @@ This project includes configuration files for easy deployment to Render:
    - Build command: `npm install && npm run build`
    - Publish directory: `dist`
 4. Add environment variables:
-   - `VITE_API_URL` - Your backend URL (e.g., https://your-backend.onrender.com)
+   - `VITE_API_URL` - Your backend URL (e.g., https://fingrow-ai-frontend.onrender.com)
 5. Click "Create Static Site"
 
 ### Option 2: Manual Deployment
