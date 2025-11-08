@@ -72,7 +72,7 @@
    pip install langchain-experimental ddgs yfinance
    ```
 5️⃣ Set up **environment variables**:  
-   - Create a `.env` file in the backend directory  
+   - Copy `.env.example` to `.env`: `cp .env.example .env`  
    - Add your **Google Gemini API key**: `GEMINI_API_KEY=your_api_key_here`
 
 ### 🎨 Frontend Setup
@@ -87,8 +87,8 @@
    yarn install
    ```  
 3️⃣ Set up **environment variables**:  
-   - Create a `.env` file in the frontend directory  
-   - Add necessary **configuration variables**  
+   - Copy `.env.example` to `.env`: `cp .env.example .env`  
+   - Update `VITE_API_URL` to point to your backend URL  
 
 ---
 
@@ -109,6 +109,44 @@
    yarn dev
    ```  
    ✅ The frontend development server will start on **http://localhost:5173**  
+
+---
+
+## ☁️ Deployment
+
+### Option 1: Render (Recommended)
+This project includes configuration files for easy deployment to Render:
+
+#### Backend Deployment
+1. Fork this repository to your GitHub account
+2. Sign up/log in to [Render](https://render.com)
+3. Click "New+" and select "Web Service"
+4. Connect your GitHub repository
+5. Configure the service:
+   - Name: `fingrow-ai-backend`
+   - Environment: `Python 3`
+   - Build command: `pip install -r requirements.txt`
+   - Start command: `python app.py`
+6. Add environment variables:
+   - `GEMINI_API_KEY` - Your Google Gemini API key
+   - `CORS_ORIGIN` - Your frontend URL (e.g., https://your-app.onrender.com)
+7. Click "Create Web Service"
+
+#### Frontend Deployment
+1. In Render, click "New+" and select "Static Site"
+2. Connect the same GitHub repository
+3. Configure the site:
+   - Name: `fingrow-ai-frontend`
+   - Build command: `npm install && npm run build`
+   - Publish directory: `dist`
+4. Add environment variables:
+   - `VITE_API_URL` - Your backend URL (e.g., https://your-backend.onrender.com)
+5. Click "Create Static Site"
+
+### Option 2: Manual Deployment
+You can also deploy to other platforms:
+- **Frontend**: Vercel, Netlify, GitHub Pages
+- **Backend**: Heroku, Railway, PythonAnywhere
 
 ---
 
@@ -147,6 +185,8 @@ Once both servers are running, open your browser and navigate to **http://localh
 
 ### ⚙️ Backend (`.env`)
 🔹 **GEMINI_API_KEY** - Google Gemini API key for AI features
+🔹 **CORS_ORIGIN** - Allowed origins for CORS (default: *)
+🔹 **PORT** - Port to run the server on (default: 5000)
 
 ### ⚙️ Frontend (`.env`)
 🔹 **VITE_API_URL** - Backend API URL (default: http://127.0.0.1:5000)
